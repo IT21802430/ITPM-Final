@@ -12,7 +12,7 @@ dbCon()
 app.use(cors())
 app.use(express.json())
 app.use('/api',routers)
-
+app.use('/hotels', routers)
 
 
 

@@ -5,12 +5,14 @@ import './App.css';
 import UserTable from './Table/UserTable';
 
 import { Toaster } from 'react-hot-toast'
+import HotelTable from './Table/HotelTable';
 
 export default function App() {
   return (
     <>
       <Toaster></Toaster>
       <UserTable />
+      <HotelTable />
     </>
   );
 }

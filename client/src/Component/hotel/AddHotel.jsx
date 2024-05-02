@@ -2,8 +2,6 @@ import React, { useRef, useState } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast';
 
-
-
 export default function AddHotel () {
     const [value, setValue] = useState({
         hotelName: '',
@@ -43,8 +41,6 @@ export default function AddHotel () {
     };
     return (
         <>
-
-
             <div id="addEmployeeModal" className="modal fade">
                 <div className="modal-dialog">
                     <div className="modal-content">
@@ -88,7 +84,6 @@ export default function AddHotel () {
                                 <input type="button" className="btn btn-default" data-bs-dismiss="modal" value="Cancel" />
                                 <input type="submit" className="btn btn-primary" value="Add" />
                             </div>
-
                         </form>
                     </div>
                 </div>

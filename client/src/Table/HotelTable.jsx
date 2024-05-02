@@ -1,20 +1,31 @@
+import axios from "axios";
+import AddHotel from "../Component/hotel/AddHotel"; 
+import UpdateHotel from "../Component/hotel/UpdateHotel"; 
+import DeleteHotel from "../Component/hotel/DeleteHotel";
+import React, { useState } from "react";
+import Table from "../Component/user/Table";
+import toast from "react-hot-toast";
+
 export default function HotelTable() {
     const [hotelId, setHotelId] = useState()
     const [updateHotelId, setUpdateHotelId] = useState()
     console.log(updateHotelId)
     const [value, setValue] = useState({
-        name: "",
-        fathername: "",
-        email: "",
-        phone: ""
+        hotelName: '',
+        businessRegNo: '',
+        address: '',
+        location: '', 
+        hotelGrade: '', 
+        roomType: '', 
+        averagePrice: '',
     })
     const deleteHotel = (hotelId) => {
         setHotelId(hotelId)
     }
-    const handleUserDelet = async () => {
+    const handleHotelDelete = async () => {
         try {
-            const DeletUser = await axios.delete(`http://localhost:8000/api/delete/${userId}`)
-            const response = DeletUser.data
+            const deleteHotel = await axios.delete(`http://localhost:8000/hotels/delete/${hotelId}`)
+            const response = deleteHotel.data
             if (response.success) {
                 toast.success(response.message)
             }
@@ -26,23 +37,23 @@ export default function HotelTable() {
     const handlechange = (e) => {
         setValue({
             ...value,
-            [e.target.name]: e.target.value
+            [e.target.hotelName]: e.target.value
         })
 
     }
 
 
-    const UpadteUserData = (Updatedid) => {
+    const updateHotelData = (updateId) => {
 
-        setUpdatedUserId(Updatedid)
+        setUpdateHotelId(updateId)
 
     }
     const handleOnSubmit = async (e) => {
         e.preventDefault();
     
         try {
-            const UpdatedUser = await axios.put(`http://localhost:8000/api/update/${updatedUserId}`,value)
-            const response = UpdatedUser.data
+            const UpdateHotel = await axios.put(`http://localhost:8000/hotels/update/${updateHotelId}`,value)
+            const response = UpdateHotel.data
 
             if (response.success) {
                 toast.success(response.message)
@@ -55,15 +66,11 @@ export default function HotelTable() {
     }
     return (
         <>
-            <Table Deletuser={deletuser} UpdatedUser={UpadteUserData}></Table>
+            <Table DeleteHotel={deleteHotel} UpdateHotel={updateHotelData}></Table>
 
-            <AddUser></AddUser>
-            <UpdatedUser handleOnSubmit={handleOnSubmit} value={value} handlechange={handlechange}></UpdatedUser>
-            <DeletUser handleUserDelet={handleUserDelet} ></DeletUser>
-
-
-
-
+            <AddHotel></AddHotel>
+            <UpdateHotel handleOnSubmit={handleOnSubmit} value={value} handlechange={handlechange}></UpdateHotel>
+            <DeleteHotel handleUserDelet={handleHotelDelete} ></DeleteHotel>
         </>
     )
 }

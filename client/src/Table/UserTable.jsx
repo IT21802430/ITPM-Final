@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import Table from '../Component/Table'
-import AddUser from '../Component/AddUser'
-import UpdatedUser from '../Component/UpdatedUser'
-import DeletUser from '../Component/DeletUser'
+import Table from '../Component/user/Table'
+import AddUser from '../Component/user/AddUser'
+import UpdatedUser from '../Component/user/UpdatedUser'
+import DeletUser from '../Component/user/DeletUser'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
